@@ -1988,9 +1988,9 @@ section,
 }
 
 @keyframes pulse {
-  0% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7); }
-  70% { box-shadow: 0 0 0 20px rgba(255, 0, 0, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0); }
+  0% { box-shadow: 0 0 0 0 rgba(0, 123, 255, 0.7); } /* Blue color */
+  70% { box-shadow: 0 0 0 20px rgba(0, 123, 255, 0); } /* Blue color */
+  100% { box-shadow: 0 0 0 0 rgba(0, 123, 255, 0); } /* Blue color */
 }
 
 .floating-contact-btn.visible {
