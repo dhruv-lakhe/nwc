@@ -183,3 +183,26 @@
   document.addEventListener('scroll', navmenuScrollspy);
 
 })();
+
+
+
+/*floating button contact us  */ 
+document.addEventListener('DOMContentLoaded', function() {
+  const floatingBtn = document.getElementById('floatingContactBtn');
+  const scrollThreshold = 300; // Button appears after scrolling 300px
+
+  function toggleButtonVisibility() {
+      if (window.pageYOffset > scrollThreshold) {
+          floatingBtn.classList.add('visible');
+      } else {
+          floatingBtn.classList.remove('visible');
+      }
+  }
+
+  window.addEventListener('scroll', toggleButtonVisibility);
+  toggleButtonVisibility(); // Check initial state
+
+  floatingBtn.addEventListener('click', function() {
+      window.location.href = 'tel:+15589554885';
+  });
+});
