@@ -1258,17 +1258,7 @@ section,
   -webkit-box-orient: vertical;
 }
 
-@media (max-width: 1200px) {
-  .gallery .gallery-card {
-    width: calc(33.33% - 30px);
-  }
-}
 
-@media (max-width: 992px) {
-  .gallery .gallery-card {
-    width: calc(50% - 30px);
-  }
-}
 
 @media (max-width: 768px) {
   .gallery {
@@ -1279,7 +1269,7 @@ section,
 
   .gallery .gallery-card {
     width: calc(100% - 30px);
-    height: auto;
+    height: 400;
     margin-bottom: 20px;
   }
 
@@ -1651,10 +1641,12 @@ section,
 .faq .content h3 {
   font-weight: 400;
   font-size: 34px;
+  color: #FFFFFF;
 }
 
 .faq .content p {
-  color: color-mix(in srgb, var(--default-color), transparent 30%);
+  color: white;
+  opacity: 0.7;
 }
 
 .faq .faq-container {
