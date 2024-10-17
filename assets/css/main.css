@@ -1858,7 +1858,7 @@ section,
   color: color-mix(in srgb, var(--heading-color), transparent 30%);
 }
 
-/* Container styling for the cards */
+/* service sections */
 .service-card {
   position: relative;
   overflow: hidden;
@@ -1943,13 +1943,12 @@ section,
 }
 
 /* Unique hover effects for each card */
-#basement-service .service-content { background-color: rgba(240, 248, 255, 0.9); }
-#building-service .service-content { background-color: rgba(230, 247, 255, 0.9); }
-#expansion-service .service-content { background-color: rgba(255, 228, 225, 0.9); }
-#external-service .service-content { background-color: rgba(245, 245, 220, 0.9); }
-#terrace-service .service-content { background-color: rgba(250, 240, 230, 0.9); }
-#bathroom-service .service-content { background-color: rgba(240, 255, 240, 0.9); }
-
+#basement-service .service-content { background-color: rgba(240, 248, 255, 0.45); } /* Increased opacity */
+#building-service .service-content { background-color: rgba(230, 247, 255, 0.45); } /* Increased opacity */
+#expansion-service .service-content { background-color: rgba(255, 228, 225, 0.45); } /* Increased opacity */
+#external-service .service-content { background-color: rgba(245, 245, 220, 0.45); } /* Increased opacity */
+#terrace-service .service-content { background-color: rgba(250, 240, 230, 0.45); } /* Increased opacity */
+#bathroom-service .service-content { background-color: rgba(240, 255, 240, 0.45); } /* Increased opacity */
 /* Responsive card adjustments */
 @media (max-width: 992px) {
   .col-lg-3 {
