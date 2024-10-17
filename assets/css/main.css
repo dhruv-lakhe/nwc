@@ -1208,20 +1208,113 @@ section,
 /*--------------------------------------------------------------
 # Gallery Section
 --------------------------------------------------------------*/
-.gallery .gallery-item {
-  overflow: hidden;
-  border-right: 3px solid var(--background-color);
-  border-bottom: 3px solid var(--background-color);
+/* Gallery container using flexbox for uniform card sizes */
+.gallery .row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.gallery .gallery-card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  margin: 15px;
+  transition: all 0.3s ease-in-out;
+  width: calc(100% - 30px);
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+.gallery .gallery-card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .gallery .gallery-item img {
   transition: all ease-in-out 0.4s;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
 }
 
 .gallery .gallery-item:hover img {
   transform: scale(1.1);
 }
 
+.gallery .gallery-description {
+  margin-top: 10px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #555;
+  text-align: justify;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 140px;
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+}
+
+@media (max-width: 1200px) {
+  .gallery .gallery-card {
+    width: calc(33.33% - 30px);
+  }
+}
+
+@media (max-width: 992px) {
+  .gallery .gallery-card {
+    width: calc(50% - 30px);
+  }
+}
+
+@media (max-width: 768px) {
+  .gallery {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .gallery .gallery-card {
+    width: calc(100% - 30px);
+    height: auto;
+    margin-bottom: 20px;
+  }
+
+  .gallery .gallery-card img {
+    width: 100%;
+    height: auto;
+    max-height: 300px;
+  }
+
+  .gallery .gallery-description {
+    font-size: 14px;
+    padding: 10px;
+    height: auto;
+    max-height: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+@media (max-width: 576px) {
+  .gallery .gallery-card {
+    width: calc(100% - 20px);
+    margin-bottom: 15px;
+  }
+
+  .gallery .gallery-card img {
+    max-height: 250px;
+  }
+
+  .gallery .gallery-description {
+    font-size: 13px;
+    padding: 8px;
+    max-height: 120px;
+  }
+}
 /*--------------------------------------------------------------
 # Testimonials Section
 --------------------------------------------------------------*/
@@ -1775,13 +1868,34 @@ section,
   transition: all 0.3s ease-in-out;
   height: 350px;
   text-align: center;
-  padding: 20px;
+  padding: 0;
+}
+
+.service-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.service-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease-in-out;
 }
 
 .service-content {
-  position: relative;
-  z-index: 1;
-  transition: all 0.4s ease-in-out;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  transform: translateY(calc(100% - 80px)); /* Raise content further up */
+  transition: transform 0.3s ease-in-out;
 }
 
 .service-card i {
@@ -1799,8 +1913,11 @@ section,
 
 .service-card p {
   opacity: 0;
-  transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
-  transform: translateY(20px);
+  transition: opacity 0.4s ease-in-out;
+}
+
+.service-card:hover .service-content {
+  transform: translateY(0); /* Slide up to show full content */
 }
 
 .service-card:hover {
@@ -1808,57 +1925,52 @@ section,
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
+.service-card:hover .service-image img {
+  transform: scale(1.1);
+}
+
 .service-card:hover i {
-  color: #ffbb2c; /* Change the icon color on hover */
-  transform: scale(1.2); /* Enlarge icon */
+  color: #ffbb2c;
+  transform: scale(1.2);
 }
 
 .service-card:hover h3 {
-  color: #ffbb2c; /* Change the title color on hover */
+  color: #ffbb2c;
 }
 
 .service-card:hover p {
-  opacity: 1; /* Make paragraph visible on hover */
-  transform: translateY(0); /* Slide up the text */
+  opacity: 1;
 }
 
 /* Unique hover effects for each card */
-#basement-service:hover {
-  background-color: #f0f8ff;
-}
-
-#building-service:hover {
-  background-color: #e6f7ff;
-}
-
-#expansion-service:hover {
-  background-color: #ffe4e1;
-}
-
-#external-service:hover {
-  background-color: #f5f5dc;
-}
-
-#terrace-service:hover {
-  background-color: #faf0e6;
-}
-
-#bathroom-service:hover {
-  background-color: #f0fff0;
-}
+#basement-service .service-content { background-color: rgba(240, 248, 255, 0.9); }
+#building-service .service-content { background-color: rgba(230, 247, 255, 0.9); }
+#expansion-service .service-content { background-color: rgba(255, 228, 225, 0.9); }
+#external-service .service-content { background-color: rgba(245, 245, 220, 0.9); }
+#terrace-service .service-content { background-color: rgba(250, 240, 230, 0.9); }
+#bathroom-service .service-content { background-color: rgba(240, 255, 240, 0.9); }
 
 /* Responsive card adjustments */
 @media (max-width: 992px) {
   .col-lg-3 {
-      flex: 0 0 50%;
+    flex: 0 0 50%;
+    max-width: 50%;
   }
 }
 
 @media (max-width: 768px) {
   .col-md-6 {
-      flex: 0 0 100%;
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  
+  .service-card {
+    height: 300px;
   }
 }
+
+
+
 
 /*floating button contact us  */ 
 .floating-contact-btn {
@@ -1932,6 +2044,7 @@ section,
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
 
 .floating-contact-btn .contact-text span:nth-child(1) { transform: rotate(0deg) translateX(-50%); }
 .floating-contact-btn .contact-text span:nth-child(2) { transform: rotate(18deg) translateX(-50%); }
